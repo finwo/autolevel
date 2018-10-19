@@ -2,7 +2,7 @@
   "name": "autolevel",
   "version": "0.0.1",
   "description": "automatically connect levelup using database url",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=babel jest"
   },
@@ -11,6 +11,18 @@
   "devDependencies": {
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "jest-isa": "0.0.4",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "levelup": "^3.1.1",
+    "url-parse": "^1.4.3"
+  },
+  "optionalDependencies": {
+    "level": "^4.0.0",
+    "leveldown": "^4.0.1",
+    "memdown": "^3.0.0",
+    "mongodown": "^1.2.0"
   }
 }
