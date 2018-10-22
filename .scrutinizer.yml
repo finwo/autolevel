@@ -1,13 +1,29 @@
 build:
   environment:
-    node: '10.11.0'
+    node: "v10.11.0"
   nodes:
     analysis:
       tests:
         override:
           - js-scrutinizer-run
+    test:
+      tests:
+        override:
+          - npm test
   tests:
     override:
-      - npm test
-#checks:
-#  javascript: true
+      - true
+
+#build:
+#  environment:
+#    node: '10.11.0'
+#  nodes:
+#    analysis:
+#      tests:
+#        override:
+#          - js-scrutinizer-run
+#  tests:
+#    override:
+#      - npm test
+##checks:
+##  javascript: true
