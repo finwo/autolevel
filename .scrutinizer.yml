@@ -11,14 +11,18 @@ build:
       tests:
         override:
           - js-scrutinizer-run
-    test:
+    coverage:
       tests:
         override:
-          - npm test
+          - command: 'npm test'
+            coverage:
+              file: 'coverage/clover.xml'
+              format: 'clover'
   tests:
     override:
       - true
 
+checks: false
 #build:
 #  environment:
 #    node: '10.11.0'
