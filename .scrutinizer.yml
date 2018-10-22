@@ -22,7 +22,7 @@ build:
     override:
       - true
 
-checks: false
+checks: []
 #build:
 #  environment:
 #    node: '10.11.0'
