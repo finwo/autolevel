@@ -1,0 +1,40 @@
+tests:
+  script:
+    - npm test
+
+#build:
+#  environment:
+#    node: "v10.11.0"
+#  dependencies:
+#    override:
+#      - git submodule update --init --recursive
+#      - npm rebuild
+#      - npm install
+#  nodes:
+#    analysis:
+#      tests:
+#        override:
+#          - js-scrutinizer-run
+#    coverage:
+#      tests:
+#        override:
+#          - command: 'npm test'
+#            coverage:
+#              file: 'coverage/clover.xml'
+#              format: 'clover'
+#  tests: []
+#
+#checks: []
+##build:
+##  environment:
+##    node: '10.11.0'
+##  nodes:
+##    analysis:
+##      tests:
+##        override:
+##          - js-scrutinizer-run
+##  tests:
+##    override:
+##      - npm test
+###checks:
+###  javascript: true
