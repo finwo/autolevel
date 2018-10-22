@@ -9,5 +9,5 @@ build:
   tests:
     override:
       - npm test
-checks:
-  javascript: true
+#checks:
+#  javascript: true
