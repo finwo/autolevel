@@ -1,6 +1,11 @@
 build:
   environment:
     node: "v10.11.0"
+  dependencies:
+    override:
+      - git submodule update --init --recursive
+      - npm rebuild
+      - npm install
   nodes:
     analysis:
       tests:
