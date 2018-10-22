@@ -37,4 +37,3 @@ test('Fetching data', async () => {
   // let result = await adapter.get('key', { asBuffer: false });
   // expect(result).toBe('value');
 });
-
