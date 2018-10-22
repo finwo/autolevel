@@ -18,10 +18,7 @@ build:
             coverage:
               file: 'coverage/clover.xml'
               format: 'clover'
-    tests: []
-  tests:
-    override:
-      - true
+  tests: []
 
 checks: []
 #build:
