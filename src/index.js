@@ -41,19 +41,10 @@ module.exports = function autolevel( location, options, callback ) {
   }
 
   // Load protocol initializers
-  require('./mem'  )(hasModule, autolevel);
-  require('./plain')(hasModule, autolevel);
-
-  /*  TODO
-      case 'mssql:'     :
-      case 'mysql:'     :
-      case 'mysql2:'    :
-      case 'sqlite:'    :
-      case 'sqlite3:'   :
-      case 'postgres:'  :
-      case 'postgresql:':
-      case 'pg:'        : return levelup(require('sqldown')(url.format(dburl)), opts);
-      */
+  require('./mem'    )(hasModule, autolevel);
+  require('./mongodb')(hasModule, autolevel);
+  require('./plain'  )(hasModule, autolevel);
+  require('./sql'    )(hasModule, autolevel);
 
   // Parse the given location, it should contain a protocol
   let parsedLocation = parseUrl(location),
