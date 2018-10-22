@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "automatically connect levelup using database url",
   "main": "src/index.js",
+  "homepage": "https://gitlab.com/finwo/autolevel",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/finwo/autolevel"
+  },
   "scripts": {
     "test": "NODE_ENV=babel jest"
   },
