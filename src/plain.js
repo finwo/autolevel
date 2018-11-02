@@ -23,7 +23,7 @@ module.exports = function (hasModule, supported) {
   } else if (hasModule('levelup') && hasModule('leveldown')) {
     // Combine levelup + leveldown
     supported.dir = function (parsedLocation, options, callback) {
-      return require('levelup')(require('leveldown')(toAbsolutePath(parsedLocation), options, callback);
+      return require('levelup')(require('leveldown')(toAbsolutePath(parsedLocation), options, callback));
     };
   } else {
     // Can't load this
