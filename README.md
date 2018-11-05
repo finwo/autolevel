@@ -66,8 +66,7 @@ db = autolevel('mysql://username:password@host:3306/database');
  
 ## TODO
 
-- Think up a nice 'plugin' style of adding adapters
-- Throw exception explaining which package is missing when loading an adapters
+- multilevel + auth + manifest support
 
 [level]: https://npmjs.com/package/level
 [levelup]: https://npmjs.com/package/levelup
