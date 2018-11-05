@@ -17,7 +17,7 @@
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
-    "jest-isa": "0.0.4",
+    "jest-isa": "^0.0.4",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
@@ -31,5 +31,14 @@
     "memdown": "^3.0.0",
     "mongodown": "^1.2.0",
     "sqldown": "^2.1.0"
-  }
+  },
+  "keywords": [
+    "autolevel",
+    "database",
+    "db",
+    "store",
+    "storage",
+    "leveldb",
+    "level"
+  ]
 }
