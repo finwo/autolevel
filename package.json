@@ -26,7 +26,6 @@
     "url-parse": "^1.4.3"
   },
   "optionalDependencies": {
-    "level": "^4.0.0",
     "leveldown": "^4.0.1",
     "memdown": "^3.0.0",
     "mongodown": "^1.2.0",
