@@ -53,24 +53,17 @@ db = autolevel('mysql://username:password@host:3306/database');
 
 ## Adapters
 
- scheme     | module                 | Dependencies                                                                         | Note
- ---------- | ---------------------- | ------------------------------------------------------------------------------------ | -----------------------------
- dir        | [leveldown][leveldown] | [level][level] OR [levelup][levelup] + [leveldown][leveldown]                        | Plain leveldb on-disk storage
- leveldb    | [leveldown][leveldown] | [level][level] OR [levelup][levelup] + [leveldown][leveldown]                        | Alias of 'dir'
- mongodb    | [mongodown][mongodown] | [levelup][levelup], [mongodown][mongodown]                                           |
- mongo      | [mongodown][mongodown] | [levelup][levelup], [mongodown][mongodown]                                           | Alias of 'mongodb'
- mem        | [memdown][memdown]     | [levelup][levelup], [memdown][memdown]                                               | Volatile in-memory storage
- memory     | [memdown][memdown]     | [levelup][levelup], [memdown][memdown]                                               | Alias of 'mem'
- ram        | [memdown][memdown]     | [levelup][levelup], [memdown][memdown]                                               | Alias of 'mem'
- mssql      | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mssql][mssql]                               |
- mysql      | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mysql][mysql]                               |
- mysql2     | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mysql2][mysql2]                             |
- sqlite3    | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [sqlite3][sqlite3]                           |
- sqlite     | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [sqlite3][sqlite3]                           | Alias of 'sqlite3'
- postgres   | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [pg][pg], [pg-query-stream][pg-query-stream] |
- postgresql | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [pg][pg], [pg-query-stream][pg-query-stream] | Alias of 'postgres'
- pg         | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [pg][pg], [pg-query-stream][pg-query-stream] | Alias of 'postgres'
-
+ type      | schemes/protocols        | driver                 | Dependencies
+ --------- | ------------------------ | ---------------------- | ------------------------------------------
+ plain     | dir, level, leveldb      | [leveldown][leveldown] | [levelup][levelup], [leveldown][leveldown]
+ mongodb   | mongo, mongodb           | [mongodown][mongodown] | [levelup][levelup], [mongodown][mongodown]
+ in-memory | ram, mem, memory         | [memdown][memdown]     | [levelup][levelup], [memdown][memdown]
+ mssql     | mssql                    | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mssql][mssql]
+ mysql     | mysql                    | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mysql][mysql]
+ mysql2    | mysql2                   | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [mysql2][mysql2]
+ sqlite3   | sqlite, sqlite3          | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [sqlite3][sqlite3]
+ postgres  | pg, postgres, postgresql | [sqldown][sqldown]     | [levelup][levelup], [sqldown][sqldown], [pg][pg], [pg-query-stream][pg-query-stream]
+ 
 ## TODO
 
 - Think up a nice 'plugin' style of adding adapters
