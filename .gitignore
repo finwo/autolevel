@@ -1,5 +1,6 @@
 
 # Created by https://www.gitignore.io/api/osx,linux,windows,node
+# Edit at https://www.gitignore.io/?templates=osx,linux,windows,node
 
 ### Linux ###
 *~
@@ -91,6 +92,9 @@ typings/
 # Serverless directories
 .serverless
 
+# FuseBox cache
+.fusebox/
+
 ### OSX ###
 # General
 .DS_Store
@@ -144,7 +148,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
 # End of https://www.gitignore.io/api/osx,linux,windows,node
 .idea/
 .gtm/
+/data/

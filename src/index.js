@@ -1,22 +1,5 @@
 let parseUrl = require('url-parse');
 
-// Check if a module is available
-function hasModule( name ) {
-  if ( require.resolve ) {
-    try {
-      return !!require.resolve(name);
-    } catch(e) {
-      return false;
-    }
-  }
-  try {
-    require(name);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
 /**
  * Initializes a new levelup instance, based on the given options
  *
@@ -40,11 +23,8 @@ module.exports = function autolevel( location, options, callback ) {
     ) || 'mem://';
   }
 
-  // Load protocol initializers
-  require('./mem'    )(hasModule, autolevel);
-  require('./mongodb')(hasModule, autolevel);
-  require('./plain'  )(hasModule, autolevel);
-  require('./sql'    )(hasModule, autolevel);
+  // Let the adapters register themselves
+  require('./adapter')(autolevel);
 
   // Parse the given location, it should contain a protocol
   let parsedLocation = parseUrl(location),
