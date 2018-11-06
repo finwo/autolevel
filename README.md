@@ -1,5 +1,5 @@
 # autolevel
-> Automatically use the right abstract-leveldown module for your configuration
+> Automatically use the right [abstract-leveldown][abstract-leveldown] module for your configuration
 
 [![pipeline status](https://gitlab.com/finwo/autolevel/badges/master/pipeline.svg)](https://gitlab.com/finwo/autolevel/commits/master)
 [![coverage report](https://gitlab.com/finwo/autolevel/badges/master/coverage.svg)](https://gitlab.com/finwo/autolevel/commits/master)
@@ -20,8 +20,9 @@ npm install --save autolevel levelup leveldown mongodown memdown sqldown mssql m
 ## Why
 
 I was tired of looking for which combination of modules to install every time I started a new project for myself or
-work. This is simply a documented wrapper for common abstract-leveldown adapters, passing options to the used
-abstract-leveldown module and returning a levelup instance.
+work using [leveldb][leveldb]. This is simply a documented wrapper for common [abstract-leveldown][abstract-leveldown]
+adapters, passing options to the used [abstract-leveldown][abstract-leveldown] module and returning a [levelup][levelup]
+instance.
 
 Below you'll find which extra dependencies you'd need to connect to certain backends.
 
@@ -68,7 +69,9 @@ db = autolevel('mysql://username:password@host:3306/database');
 
 - multilevel + auth + manifest support
 
+[abstract-leveldown]: https://npmjs.com/package/abstract-leveldown
 [level]: https://npmjs.com/package/level
+[leveldb]: http://leveldb.org/
 [levelup]: https://npmjs.com/package/levelup
 [leveldown]: https://npmjs.com/package/leveldown
 [mongodown]: https://npmjs.com/package/mongodown
