@@ -1,5 +1,5 @@
 const multilevel = require('multilevel'),
-      WebSocket  = require('reconnectingwebsocket'),
+      WebSocket  = require('ws'),
       urlParse   = require('url-parse');
 
 const protomap = {
@@ -43,6 +43,7 @@ module.exports = function (location, options, callback) {
   // Connect
   queue.unshift(function(callback) {
     let stream = new WebSocket(parsedLocation.toString());
+    console.log(stream);
     stream.on('open', function() {
       stream.pipe(db.createRpcStream()).pipe(stream);
       callback();
