@@ -1,5 +1,5 @@
 const multilevel = require('multilevel'),
-      shoe       = require('shoe'),
+      WebSocket  = require('ws'),
       urlParse   = require('url-parse');
 
 const protomap = {
@@ -42,8 +42,11 @@ module.exports = function (location, options, callback) {
 
   // Connect
   queue.unshift(function(callback) {
-    let stream = shoe(parsedLocation.toString(), callback);
-    stream.pipe(db.createRpcStream()).pipe(stream);
+    let stream = new WebSocket(parsedLocation.toString());
+    stream.on('open', function() {
+      stream.pipe(db.createRpcStream()).pipe(stream);
+      callback();
+    });
   });
 
   // Queue runner
