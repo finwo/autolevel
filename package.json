@@ -23,8 +23,7 @@
   "dependencies": {
     "app-root-path": "^2.1.0",
     "levelup": "^3.1.1",
-    "url-parse": "^1.4.3",
-    "ws": "^6.1.0"
+    "url-parse": "^1.4.3"
   },
   "optionalDependencies": {
     "leveldown": "^4.0.1",
