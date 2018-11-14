@@ -19,7 +19,7 @@ module.exports = function (location, options, callback) {
         db                = multilevel.client();
   parsedLocation.protocol = proto + ':';
 
-  const queue = [callback];
+  const queue = [];
 
   // Detect simple auth
   if (parsedLocation.auth) {
