@@ -12,11 +12,45 @@ const protomap = {
 };
 
 module.exports = function (location, options, callback) {
-  let parsedLocation      = urlParse(location),
-      proto               = protomap[parsedLocation.protocol.split(':').shift().toLowerCase()];
+
+  // Setup constants
+  const parsedLocation    = urlParse(location),
+        proto             = protomap[parsedLocation.protocol.split(':').shift().toLowerCase()],
+        db                = multilevel.client();
   parsedLocation.protocol = proto + ':';
-  let db                  = multilevel.client(),
-      stream              = shoe(parsedLocation.toString());
-  stream.pipe(db.createRpcStream()).pipe(stream);
-  return db;
+
+  const queue = [callback];
+
+  // Detect simple auth
+  if (parsedLocation.auth) {
+    if (parsedLocation.username && parsedLocation.password) {
+      let user = parsedLocation.username,
+          pass = parsedLocation.password;
+      queue.unshift(function(callback) {
+        db.auth({user,pass}, callback);
+      });
+    } else {
+      let auth = parsedLocation.auth;
+      queue.unshift(function(callback) {
+        db.auth(auth, callback);
+      });
+    }
+    parsedLocation.auth     = '';
+    parsedLocation.username = '';
+    parsedLocation.password = '';
+  }
+
+  // Connect
+  queue.unshift(function(callback) {
+    let stream = shoe(parsedLocation.toString(), callback);
+    stream.pipe(db.createRpcStream()).pipe(stream);
+  });
+
+  // Queue runner
+  (function next(err) {
+    if (err) return callback(err);     // Error handling
+    let fn = queue.shift();            // Fetch next function
+    if (!fn) return callback(null,db); // Done
+    fn(next);                          // Run next
+  })();
 };
