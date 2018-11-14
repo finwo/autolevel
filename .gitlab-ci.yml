@@ -9,6 +9,7 @@ stages:
   - deploy
 
 tests:
+  retry: 2
   stage: test
   script:
     - git submodule update --init --recursive
@@ -17,6 +18,7 @@ tests:
     - npm test
 
 deploy:
+  retry: 2
   stage: deploy
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
