@@ -45,6 +45,13 @@ let adapters = [
     name        : ['pg', 'postgres', 'postgresql'],
     backend     : 'sqldown',
     dependencies: ['levelup', 'sqldown', 'knex', 'pg', 'pg-query-stream']
+  }, {
+    name        : ['wsrpc','wssrpc','ws-rpc','wss-rpc','rpc','rpcs'],
+    backend     : './custom/wsrpc',
+    dependencies: ['levelup', 'shoe', 'multilevel'],
+    options     : {
+      direct: true
+    }
   }
 ];
 
@@ -75,6 +82,15 @@ function wrapper(descriptor) {
     }
   }
 
+  // Some return a levelup(-compatible) instance directly
+  let levelup = descriptor.options.direct ?
+    function( leveldown, location, options, callback ) {
+      return leveldown(location, options, callback);
+    } :
+    function( leveldown, location, options, callback ) {
+      return require('levelup')(leveldown(location), options, callback);
+    };
+
   // Let's build the actual wrapper
   switch (typeof descriptor.options.path) {
     case 'string':
@@ -82,13 +98,13 @@ function wrapper(descriptor) {
         case 'omit':
           descriptor.wrapper = function (parsedLocation, options, callback) {
             let backend = 'function' === typeof descriptor.backend ? descriptor.backend : require(descriptor.backend);
-            return require('levelup')(backend(), options, callback);
+            return levelup(backend, undefined, options, callback);
           };
           break;
         case 'absolute':
           descriptor.wrapper = function (parsedLocation, options, callback) {
             let backend = 'function' === typeof descriptor.backend ? descriptor.backend : require(descriptor.backend);
-            return require('levelup')(backend(toAbsolutePath(parsedLocation)), options, callback);
+            return levelup(backend, toAbsolutePath(parsedLocation), options, callback);
           };
           break;
       }
@@ -97,13 +113,13 @@ function wrapper(descriptor) {
       descriptor.wrapper = function (parsedLocation, options, callback) {
         let backend = 'function' === typeof descriptor.backend ? descriptor.backend : require(descriptor.backend);
         Object.assign(parsedLocation, descriptor.options.path);
-        return require('levelup')(backend(parsedLocation.toString()), options, callback);
+        return levelup(backend, parsedLocation.toString(), options, callback);
       };
       break;
     default:
       descriptor.wrapper = function (parsedLocation, options, callback) {
         let backend = 'function' === typeof descriptor.backend ? descriptor.backend : require(descriptor.backend);
-        return require('levelup')(backend(parsedLocation.href || parsedLocation), options, callback);
+        return levelup(backend, parsedLocation.href || parsedLocation, options, callback);
       };
       break;
   }
