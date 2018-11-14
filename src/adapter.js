@@ -48,7 +48,7 @@ let adapters = [
   }, {
     name        : ['wsrpc','wssrpc','ws-rpc','wss-rpc','rpc','rpcs'],
     backend     : './custom/wsrpc',
-    dependencies: ['levelup', 'shoe', 'multilevel'],
+    dependencies: ['levelup', 'ws', 'multilevel'],
     options     : {
       direct: true
     }
