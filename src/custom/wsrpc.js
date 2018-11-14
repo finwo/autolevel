@@ -42,7 +42,9 @@ module.exports = function (location, options, callback) {
 
   // Connect
   queue.unshift(function(callback) {
-    let stream = new WebSocket(parsedLocation.toString());
+    let stream = new WebSocket(parsedLocation.toString(), {
+      perMessageDeflate: false
+    });
     stream.pipe(db.createRpcStream()).pipe(stream);
     callback();
   });
