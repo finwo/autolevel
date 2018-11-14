@@ -1,5 +1,5 @@
 const multilevel = require('multilevel'),
-      WebSocket  = require('ws'),
+      WebSocket  = require('reconnectingwebsocket'),
       urlParse   = require('url-parse');
 
 const protomap = {
