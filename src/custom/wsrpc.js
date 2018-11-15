@@ -72,7 +72,6 @@ module.exports = function (location, options, callback) {
 
     // Handle auth & callback
     ws.on('open', function() {
-      if (auth && queue.length) queue = [];
       if (auth) return db.auth(auth,cb);
       cb();
     });
