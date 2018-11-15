@@ -31,7 +31,8 @@
     "mongodown": "^1.2.0",
     "multilevel": "^7.2.3",
     "sqldown": "^2.1.0",
-    "websocket-stream": "^5.1.2"
+    "through": "^2.3.8",
+    "ws": "^6.1.0"
   },
   "keywords": [
     "autolevel",
