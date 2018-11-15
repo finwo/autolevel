@@ -38,8 +38,15 @@ module.exports = function (location, options, callback) {
   }
 
   // handle rpc output
+  let queue = [];
   rpcStream.on('data', function(chunk) {
-    if (ws) ws.send(chunk);
+    if (ws && ws.readyState === ws.OPEN) {
+      while(queue.length)
+        ws.send(queue.shift());
+      ws.send(chunk);
+    } else {
+      queue.push(chunk);
+    }
   });
 
 
@@ -65,6 +72,7 @@ module.exports = function (location, options, callback) {
 
     // Handle auth & callback
     ws.on('open', function() {
+      if (auth && queue.length) queue = [];
       if (auth) return db.auth(auth,cb);
       cb();
     });
