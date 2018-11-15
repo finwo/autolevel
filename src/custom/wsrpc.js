@@ -1,5 +1,6 @@
 const multilevel = require('multilevel'),
-      WebSocket  = require('websocket-stream'),
+      through    = require('through'),
+      WS         = require('ws'),
       urlParse   = require('url-parse');
 
 const protomap = {
@@ -16,44 +17,67 @@ module.exports = function (location, options, callback) {
   // Setup constants
   const parsedLocation    = urlParse(location),
         proto             = protomap[parsedLocation.protocol.split(':').shift().toLowerCase()],
-        db                = multilevel.client();
+        db                = multilevel.client(),
+        rpcStream         = db.createRpcStream();
   parsedLocation.protocol = proto + ':';
 
-  const queue = [];
-
   // Detect simple auth
+  let auth = false;
   if (parsedLocation.auth) {
     if (parsedLocation.username && parsedLocation.password) {
-      let user = parsedLocation.username,
-          pass = parsedLocation.password;
-      queue.unshift(function(callback) {
-        db.auth({user,pass}, callback);
-      });
+      auth = {
+        user: parsedLocation.username,
+        pass: parsedLocation.password
+      };
     } else {
-      let auth = parsedLocation.auth;
-      queue.unshift(function(callback) {
-        db.auth(auth, callback);
-      });
+      auth = parsedLocation.auth;
     }
     parsedLocation.auth     = '';
     parsedLocation.username = '';
     parsedLocation.password = '';
   }
 
-  // Connect
-  queue.unshift(function(callback) {
-    let stream = new WebSocket(parsedLocation.toString(), {
-      perMessageDeflate: false
-    });
-    stream.pipe(db.createRpcStream()).pipe(stream);
-    callback();
+  // handle rpc output
+  rpcStream.on('data', function(chunk) {
+    if (ws) ws.send(chunk);
   });
 
-  // Queue runner
-  (function next(err) {
-    if (err) return callback(err);     // Error handling
-    let fn = queue.shift();            // Fetch next function
-    if (!fn) return callback(null,db); // Done
-    fn(next);                          // Run next
-  })();
+
+  // Handles connect & auth
+  let ws = false;
+  function reconnect(cb) {
+
+    // Destroy old stream
+    if (ws) {
+      ws.destroy();
+      ws = false;
+    }
+
+    // New stream
+    ws = new WS(parsedLocation.toString(), {
+      perMessageDeflate: false
+    });
+
+    // Handle input messages
+    ws.on('message', function(chunk) {
+      rpcStream.write(chunk);
+    });
+
+    // Handle auth & callback
+    ws.on('open', function() {
+      if (auth) return db.auth(auth,cb);
+      cb();
+    });
+
+    // Handle reconnect
+    ws.on('close', function() {
+      setTimeout(reconnect,10);
+    });
+  }
+
+  // Initial connect
+  reconnect(function(err) {
+    if (err) return callback(err);
+    callback(null, db);
+  });
 };
