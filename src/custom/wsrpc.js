@@ -89,6 +89,7 @@ module.exports = function (location, options, callback) {
       ws.isAlive = true;
     });
     setTimeout(function heartbeat() {
+      if (!ws.readyState) return setTimeout(heartbeat,100);
       if (!ws.isAlive) return reconnect();
       ws.isAlive = false;
       ws.ping();
