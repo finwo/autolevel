@@ -56,8 +56,9 @@ module.exports = function (location, options, callback) {
 
     // Destroy old stream
     if (ws) {
-      if ('function' === ws.close  ) ws.close();
-      if ('function' === ws.destroy) ws.destroy();
+      if ('function' === ws.close    ) ws.close();
+      if ('function' === ws.destroy  ) ws.destroy();
+      if ('function' === ws.terminate) ws.terminate();
       ws = false;
     }
 
