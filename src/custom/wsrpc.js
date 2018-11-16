@@ -75,13 +75,24 @@ module.exports = function (location, options, callback) {
     // Handle auth & callback
     ws.on('open', function() {
       if (auth) return db.auth(auth,cb);
-      cb();
+      if ('function' === typeof cb) cb();
     });
 
     // Handle reconnect
     ws.on('close', function() {
       setTimeout(reconnect,10);
     });
+
+    // Heartbeat
+    ws.isAlive = true;
+    ws.on('pong', function() {
+      ws.isAlive = true;
+    });
+    setTimeout(function heartbeat() {
+      if (!ws.isAlive) return reconnect();
+      ws.isAlive = false;
+      ws.ping();
+    })
   }
 
   // Initial connect
