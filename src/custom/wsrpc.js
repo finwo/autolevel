@@ -92,7 +92,8 @@ module.exports = function (location, options, callback) {
       if (!ws.isAlive) return reconnect();
       ws.isAlive = false;
       ws.ping();
-    })
+      setTimeout(heartbeat,10000);
+    },100)
   }
 
   // Initial connect
