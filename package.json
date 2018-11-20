@@ -1,6 +1,6 @@
 {
   "name": "autolevel",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "automatically connect levelup using database url",
   "main": "src/index.js",
   "homepage": "https://gitlab.com/finwo/autolevel",
