@@ -1,4 +1,7 @@
 # autolevel
+
+[![NPM](https://nodei.co/npm/autolevel.png)](https://nodei.co/npm/autolevel/)
+
 > Automatically use the right [abstract-leveldown][abstract-leveldown] module for your configuration
 
 [![pipeline status](https://gitlab.com/finwo/autolevel/badges/master/pipeline.svg)](https://gitlab.com/finwo/autolevel/commits/master)
