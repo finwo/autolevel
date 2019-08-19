@@ -18,21 +18,21 @@
     "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
     "jest-isa": "^0.0.4",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.7.1"
   },
   "dependencies": {
-    "app-root-path": "^2.1.0",
+    "app-root-path": "^2.2.1",
     "levelup": "^3.1.1",
-    "url-parse": "^1.4.3"
+    "url-parse": "^1.4.7"
   },
   "optionalDependencies": {
-    "leveldown": "^4.0.1",
+    "cws": "^1.2.4",
+    "leveldown": "^4.0.2",
     "memdown": "^3.0.0",
     "mongodown": "^1.2.0",
     "multilevel": "^7.2.3",
     "sqldown": "^2.1.0",
-    "through": "^2.3.8",
-    "ws": "^6.1.0"
+    "through": "^2.3.8"
   },
   "keywords": [
     "autolevel",

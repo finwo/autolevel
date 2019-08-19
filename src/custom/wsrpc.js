@@ -1,6 +1,6 @@
 const multilevel = require('multilevel'),
       through    = require('through'),
-      WS         = require('ws'),
+      WS         = require('cws'),
       urlParse   = require('url-parse');
 
 const protomap = {
