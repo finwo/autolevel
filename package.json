@@ -12,7 +12,7 @@
     "test": "NODE_ENV=babel jest"
   },
   "author": "Robin Bron <robin@finwo.nl>",
-  "license": "MIT",
+  "license": "BSD2",
   "devDependencies": {
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
