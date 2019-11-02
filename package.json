@@ -9,17 +9,14 @@
     "url": "https://gitlab.com/finwo/autolevel"
   },
   "scripts": {
-    "test": "NODE_ENV=babel jest",
+    "test": "scripts/test.sh",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"autolevel@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "author": "Robin Bron <robin@finwo.nl>",
   "license": "BSD2",
   "devDependencies": {
-    "babel-jest": "^24.9.0",
-    "babel-preset-env": "^1.7.0",
-    "jest": "^24.9.0",
-    "jest-isa": "^0.0.4",
-    "rimraf": "^3.0.0"
+    "esm": "^3.2.25",
+    "tape": "^4.11.0"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
