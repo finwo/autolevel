@@ -28,7 +28,7 @@
   "optionalDependencies": {
     "cws": "^1.2.4",
     "leveldown": "^5.4.1",
-    "memdown": "^3.0.0",
+    "memdown": "^5.1.0",
     "mongodown": "^1.2.0",
     "multilevel": "^7.2.3",
     "sqldown": "^2.1.0",
