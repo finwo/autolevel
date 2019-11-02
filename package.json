@@ -3,10 +3,10 @@
   "version": "1.0.2",
   "description": "automatically connect levelup using database url",
   "main": "src/index.js",
-  "homepage": "https://gitlab.com/finwo/autolevel",
+  "homepage": "https://github.com/finwo/autolevel",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/finwo/autolevel"
+    "url": "https://github.com/finwo/autolevel"
   },
   "scripts": {
     "test": "scripts/test.sh",
