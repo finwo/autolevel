@@ -14,7 +14,7 @@
   "author": "Robin Bron <robin@finwo.nl>",
   "license": "MIT",
   "devDependencies": {
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^24.9.0",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
     "jest-isa": "^0.0.4",
