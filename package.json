@@ -21,7 +21,7 @@
     "rimraf": "^3.0.0"
   },
   "dependencies": {
-    "app-root-path": "^2.2.1",
+    "app-root-path": "^3.0.0",
     "levelup": "^4.3.2",
     "url-parse": "^1.4.7"
   },
