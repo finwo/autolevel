@@ -1,18 +1,17 @@
-//import expect from 'expect';
-//import rimraf from 'rimraf';
-//import absolutePath from './to-absolute-path';
+import test     from 'tape';
+import isBuffer from 'is-buffer';
 
-//// Setup environment
-//if ('object' !== typeof process) process = {};
-//if (!process.env) process.env = {};
-//process.env.TEST = true;
-//let noop = ()=>{};
+import rimraf from 'rimraf';
+import absolutePath from './to-absolute-path';
 
-//// Load extends
-//expect.extend(require('jest-isa'));
+// Setup environment
+if ('object' !== typeof process) process = {};
+if (!process.env) process.env = {};
+process.env.TEST = true;
+const noop = ()=>{};
 
-//// Load our module
-//let autolevel = require('./index');
+// Load our module
+const autolevel = require('./index');
 
 //// // Initialize references
 //// let kv,
@@ -29,32 +28,32 @@
 ////   kv = await (require('./kv')('mem://'));
 //// });
 
-//test('Ensure autolevel loads', async () => {
-//  expect(autolevel).toBeDefined(); // Basics
-//  expect(autolevel).isA(Function);
-//  let instance = autolevel();
-//  expect(instance).isA(Object);
-//});
+test('Ensure autolevel loads', async t => {
+  t.plan(2);
 
-//test('Verify memory adapter', async () => {
-//  expect(autolevel).toBeDefined(); // Basics
-//  expect(autolevel).isA(Function);
-//  let instance = autolevel('mem://');
-//  expect(await instance.put('key', 'value')).toBeUndefined();
-//  expect(await instance.get('key')).isA(Buffer);
-//  expect(await instance.get('key', {asBuffer: false})).toBe('value');
-//});
+  t.equal(typeof autolevel  , 'function', 'Exported module should be a function');
+  t.equal(typeof autolevel(), 'object'  , 'Running exported function returns an object');
+});
 
-//test('Verify plain adapter', async () => {
-//  expect(autolevel).toBeDefined(); // Basics
-//  expect(autolevel).isA(Function);
-//  let instance = autolevel('dir://data/');
-//  expect(await instance.put('key', 'value')).toBeUndefined();
-//  expect(await instance.get('key')).isA(Buffer);
-//  expect(await instance.get('key', {asBuffer: false})).toBe('value');
-//  expect(await instance.close()).toBeUndefined();
-//  rimraf(absolutePath('dir://data'), noop);
-//});
+test('Verify memory adapter', async t => {
+  t.plan(3);
+
+  const instance = autolevel('mem://');
+  t.equal(await instance.put('key', 'value') , undefined, 'put returns nothing');
+  t.equal(isBuffer(await instance.get('key')), true     , 'get returns a buffer');
+  t.equal(await instance.get('key', {asBuffer:false})   , 'value'  , 'get returns original value');
+});
+
+test('Verify plain adapter', async t => {
+  t.plan(4);
+
+  const instance = autolevel('dir://data/');
+  t.equal(await instance.put('key', 'value') , undefined, 'put returns nothing');
+  t.equal(isBuffer(await instance.get('key')), true     , 'get returns a buffer');
+  t.equal(await instance.get('key', {asBuffer:false})   , 'value'  , 'get returns original value');
+  t.equal(await instance.close(), undefined, 'close returns undefined');
+  rimraf(absolutePath('dir://data'), noop);
+});
 
 ///* TODO:
 // *   mssql
