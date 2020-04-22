@@ -13,7 +13,7 @@
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"autolevel@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "author": "Robin Bron <robin@finwo.nl>",
-  "license": "BSD2",
+  "license": "MIT",
   "devDependencies": {
     "esm": "^3.2.25",
     "is-buffer": "^2.0.4",
