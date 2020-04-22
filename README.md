@@ -1,12 +1,6 @@
 # autolevel
 
-[![NPM](https://nodei.co/npm/autolevel.png)](https://nodei.co/npm/autolevel/)
-
 > Automatically use the right [abstract-leveldown][abstract-leveldown] module for your configuration
-
-[![pipeline status](https://gitlab.com/finwo/autolevel/badges/master/pipeline.svg)](https://gitlab.com/finwo/autolevel/commits/master)
-[![coverage report](https://gitlab.com/finwo/autolevel/badges/master/coverage.svg)](https://gitlab.com/finwo/autolevel/commits/master)
-[![npm](https://img.shields.io/npm/v/autolevel.svg?style=flat-square)](https://www.npmjs.com/package/autolevel)
 
 ## Installation
 
