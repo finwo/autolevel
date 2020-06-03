@@ -45,13 +45,6 @@ let adapters = [
     name        : ['pg', 'postgres', 'postgresql'],
     backend     : 'sqldown',
     dependencies: ['levelup', 'sqldown', 'knex', 'pg', 'pg-query-stream']
-  // }, {
-  //   name        : ['wsrpc','wssrpc','ws-rpc','wss-rpc','rpc','rpcs'],
-  //   backend     : './custom/wsrpc',
-  //   dependencies: ['levelup', 'cws', 'multilevel'],
-  //   options     : {
-  //     direct: true
-  //   }
   }
 ];
 
