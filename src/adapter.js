@@ -12,7 +12,7 @@ let adapters = [
       path: 'omit'
     }
   }, {
-    name        : ['dir', 'leveldb', 'level'],
+    name        : ['file', 'dir', 'leveldb', 'level'],
     backend     : 'leveldown',
     dependencies: ['levelup', 'leveldown'],
     options     : {
