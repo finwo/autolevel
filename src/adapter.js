@@ -25,26 +25,6 @@ let adapters = [
     options     : {
       path: {protocol: 'mongodb:'}
     }
-  }, {
-    name        : ['mssql'],
-    backend     : 'sqldown',
-    dependencies: ['levelup', 'sqldown', 'knex', 'mssql']
-  }, {
-    name        : ['mysql'],
-    backend     : 'sqldown',
-    dependencies: ['levelup', 'sqldown', 'knex', 'mysql']
-  }, {
-    name        : ['mysql2'],
-    backend     : 'sqldown',
-    dependencies: ['levelup', 'sqldown', 'knex', 'mysql2']
-  }, {
-    name        : ['sqlite', 'sqlite3'],
-    backend     : 'sqldown',
-    dependencies: ['levelup', 'sqldown', 'knex', 'sqlite3']
-  }, {
-    name        : ['pg', 'postgres', 'postgresql'],
-    backend     : 'sqldown',
-    dependencies: ['levelup', 'sqldown', 'knex', 'pg', 'pg-query-stream']
   }
 ];
 

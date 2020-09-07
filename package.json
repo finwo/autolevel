@@ -26,13 +26,9 @@
     "url-parse": "^1.4.7"
   },
   "optionalDependencies": {
-    "cws": "^1.2.10",
     "leveldown": "^5.4.1",
     "memdown": "^5.1.0",
-    "mongodown": "^2.0.0",
-    "multilevel": "^7.2.3",
-    "sqldown": "^2.1.0",
-    "through": "^2.3.8"
+    "mongodown": "^2.0.0"
   },
   "funding": {
     "url": "https://github.com/sponsors/finwo"
