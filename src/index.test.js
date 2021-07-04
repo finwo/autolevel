@@ -1,8 +1,8 @@
-import test     from 'tape';
-import isBuffer from 'is-buffer';
+const test = require('tape');
+const isBuffer = require('is-buffer');
 
-import rimraf from 'rimraf';
-import absolutePath from './to-absolute-path';
+const rimraf = require('rimraf');
+const absolutePath = require('./to-absolute-path');
 
 // Setup environment
 if ('object' !== typeof process) process = {};
