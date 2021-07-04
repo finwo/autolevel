@@ -16,18 +16,18 @@
   "license": "MIT",
   "devDependencies": {
     "esm": "^3.2.25",
-    "is-buffer": "^2.0.4",
+    "is-buffer": "^2.0.5",
     "rimraf": "^3.0.2",
-    "tape": "^5.0.1"
+    "tape": "^5.2.2"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "levelup": "^4.3.2",
-    "url-parse": "^1.4.7"
+    "levelup": "^5.0.1",
+    "url-parse": "^1.5.1"
   },
   "optionalDependencies": {
-    "leveldown": "^5.4.1",
-    "memdown": "^5.1.0",
+    "leveldown": "^6.0.0",
+    "memdown": "^6.0.0",
     "mongodown": "^2.0.0"
   },
   "funding": {
