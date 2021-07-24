@@ -36,10 +36,10 @@ var db;
 db = autolevel();
 
 // Load database from folder, relative to the app root
-db = autolevel('dir://data/');
+db = autolevel('dir:data/');
 
 // Load database from folder, absolute path
-db = autolevel('dir:///data/');
+db = autolevel('dir://data/');
 
 // Use mongodb storage
 db = autolevel('mongodb://localhost:27017/database');
