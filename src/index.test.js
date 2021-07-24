@@ -47,7 +47,7 @@ test('Verify memory adapter', async t => {
 test('Verify plain adapter', async t => {
   t.plan(4);
 
-  const instance = autolevel('dir://data/');
+  const instance = autolevel('dir:data/');
   t.equal(await instance.put('key', 'value') , undefined, 'put returns nothing');
   t.equal(isBuffer(await instance.get('key')), true     , 'get returns a buffer');
   t.equal(await instance.get('key', {asBuffer:false})   , 'value'  , 'get returns original value');
